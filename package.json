@@ -51,6 +51,7 @@
     "json-refs": "^3.0.15",
     "lllog": "^1.1.2",
     "micro-memoize": "^4.1.2",
+    "object-hash": "^3.0.0",
     "parse-prefer-header": "^1.0.0",
     "superstruct": "^0.6.2",
     "yargs": "^17.7.2"
