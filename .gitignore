@@ -9,3 +9,5 @@ coverage/
 
 # Editor configuration files
 .idea/
+
+tests/resources/
