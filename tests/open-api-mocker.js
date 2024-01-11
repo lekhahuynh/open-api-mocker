@@ -24,6 +24,8 @@ class CustomServer {
 
 	setPaths() { return this; }
 
+	setSecurityConfig() { return this; }
+
 	init() {}
 }
 
@@ -44,6 +46,7 @@ describe('OpenAPI Mocker', () => {
 		sinon.spy(Server.prototype, 'setServers');
 		sinon.spy(Server.prototype, 'setPort');
 		sinon.spy(Server.prototype, 'setPaths');
+		sinon.spy(Server.prototype, 'setSecurityConfig');
 		sinon.stub(Server.prototype, 'init');
 		sinon.stub(Server.prototype, 'shutdown');
 	});
@@ -76,6 +79,7 @@ describe('OpenAPI Mocker', () => {
 				sinon.spy(CustomServer.prototype, 'setServers');
 				sinon.spy(CustomServer.prototype, 'setPort');
 				sinon.spy(CustomServer.prototype, 'setPaths');
+				sinon.spy(CustomServer.prototype, 'setSecurityConfig');
 				sinon.stub(CustomServer.prototype, 'init');
 
 				const openApiMocker = new OpenApiMocker({ server: new CustomServer() });
@@ -87,12 +91,14 @@ describe('OpenAPI Mocker', () => {
 				sinon.assert.calledOnce(CustomServer.prototype.setServers);
 				sinon.assert.calledOnce(CustomServer.prototype.setPort);
 				sinon.assert.calledOnce(CustomServer.prototype.setPaths);
+				sinon.assert.calledOnce(CustomServer.prototype.setSecurityConfig);
 				sinon.assert.calledOnce(CustomServer.prototype.init);
 
 				// Should not use the default server
 				sinon.assert.notCalled(Server.prototype.setServers);
 				sinon.assert.notCalled(Server.prototype.setPort);
 				sinon.assert.notCalled(Server.prototype.setPaths);
+				sinon.assert.notCalled(Server.prototype.setSecurityConfig);
 				sinon.assert.notCalled(Server.prototype.init);
 			});
 		});
